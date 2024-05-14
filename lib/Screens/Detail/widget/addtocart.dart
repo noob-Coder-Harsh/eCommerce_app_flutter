@@ -1,7 +1,10 @@
+import 'package:ecommerce_app/models/product_model.dart';
+import 'package:ecommerce_app/providers/cart_provider.dart';
 import 'package:flutter/material.dart';
 
 class AddToCart extends StatefulWidget {
-  const AddToCart({super.key});
+  final Product product;
+  const AddToCart({super.key, required this.product});
 
   @override
   State<AddToCart> createState() => _AddToCartState();
@@ -11,6 +14,7 @@ class _AddToCartState extends State<AddToCart> {
   int currentIndex = 1;
   @override
   Widget build(BuildContext context) {
+    final provider = CartProvider.of(context);
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Container(
@@ -35,21 +39,24 @@ class _AddToCartState extends State<AddToCart> {
                       onPressed: (){},
                       splashColor: Colors.white,
                       splashRadius: 10,
-                      icon: Icon(Icons.remove,color: Colors.white,)),
-                  SizedBox(width: 10,),
-                  Text('$currentIndex',style: TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
-                  SizedBox(width: 10,),
+                      icon: const Icon(Icons.remove,color: Colors.white,)),
+                  const SizedBox(width: 10,),
+                  Text('$currentIndex',style: const TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
+                  const SizedBox(width: 10,),
                   IconButton(
                       onPressed: (){},
                       splashColor: Colors.white,
                       splashRadius: 10,
-                      icon: Icon(Icons.add,color: Colors.white,))
+                      icon: const Icon(Icons.add,color: Colors.white,))
                 ],
               ),
             ),
-            SizedBox(width: 20,),
+            const SizedBox(width: 20,),
             GestureDetector(
-              onTap: (){},
+              onTap: (){
+                provider.toggleFavourite(widget.product);
+                print('product added ${widget.product.title}');
+              },
               child: Container(
                 alignment: Alignment.center,
                 height: 50,
@@ -57,8 +64,8 @@ class _AddToCartState extends State<AddToCart> {
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.deepOrange
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0,horizontal: 40),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12.0,horizontal: 40),
                   child: Text('Add to cart',
                     style: TextStyle(color: Colors.white,fontSize: 16),),
                 ),

@@ -20,7 +20,7 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      floatingActionButton: AddToCart(),
+      floatingActionButton: AddToCart(product: widget.product,),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Padding(
         padding: const EdgeInsets.all(8.0),

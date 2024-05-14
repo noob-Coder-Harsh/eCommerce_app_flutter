@@ -5,14 +5,14 @@ class ImageSlider extends StatefulWidget {
   final Function(int) onChange;
   final int currentSlide;
 
-  ImageSlider({
+  const ImageSlider({
     Key? key,
     required this.onChange,
     required this.currentSlide,
   }) : super(key: key);
 
   @override
-  _ImageSliderState createState() => _ImageSliderState();
+  State<ImageSlider> createState() => _ImageSliderState();
 }
 
 class _ImageSliderState extends State<ImageSlider> {
@@ -22,12 +22,12 @@ class _ImageSliderState extends State<ImageSlider> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 3), (timer) {
+    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
       if (_pageController.page == null) return;
       int nextPage = (_pageController.page!.toInt() + 1) % 3; // Number of slides
       _pageController.animateToPage(
         nextPage,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         curve: Curves.ease,
       );
     });
@@ -82,10 +82,10 @@ class _ImageSliderState extends State<ImageSlider> {
               children: List.generate(
                 3, // number of slides
                     (index) => AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
+                  duration: const Duration(milliseconds: 300),
                   width: widget.currentSlide == index ? 15 : 8,
                   height: 8,
-                  margin: EdgeInsets.only(right: 3),
+                  margin: const EdgeInsets.only(right: 3),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: widget.currentSlide == index
