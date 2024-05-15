@@ -1,7 +1,7 @@
 
 import 'package:ecommerce_app/Screens/Cart/cart_screen.dart';
 import 'package:ecommerce_app/Screens/Home/home_screen.dart';
-import 'package:ecommerce_app/Screens/fav_screen.dart';
+import 'package:ecommerce_app/Screens/Favorite/fav_screen.dart';
 import 'package:flutter/material.dart';
 
 class NavbarPage extends StatefulWidget {
@@ -58,7 +58,7 @@ class _NavbarPageState extends State<NavbarPage> {
                 currentIndex =1;
               });
             },
-                icon: Icon(Icons.grid_view_outlined,size: 30,
+                icon: Icon(Icons.favorite_outline,size: 30,
                   color: currentIndex == 1 ? Colors.deepOrange : Colors.grey,)
             ),
             SizedBox(width: 50,),

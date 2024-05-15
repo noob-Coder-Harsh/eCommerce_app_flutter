@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Screens/Cart/check_out.dart';
 import 'package:ecommerce_app/navbar_page.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,7 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       // for total and check out
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-      // bottomSheet:  CheckOutBox(),
+      bottomSheet: CheckOutBox(),
       body: SafeArea(
         child: Column(
           children: [
@@ -79,7 +80,7 @@ class _CartScreenState extends State<CartScreen> {
                   return Stack(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(15.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 7),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
@@ -124,7 +125,7 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                   const SizedBox(height: 8),
                                   Text(
-                                    "\$${cartItems.price}",
+                                    "₹${cartItems.price}",
                                     style: const TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
@@ -185,12 +186,13 @@ class _CartScreenState extends State<CartScreen> {
                             ),
                           ],
                         ),
-                      )
+                      ),
                     ],
                   );
                 },
               ),
             ),
+            SizedBox(height: MediaQuery.of(context).size.height*0.25,)
           ],
         ),
       ),

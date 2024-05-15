@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/Screens/Detail/details_screen.dart';
 import 'package:ecommerce_app/models/product_model.dart';
+import 'package:ecommerce_app/providers/fav_provider.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
@@ -8,6 +9,7 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = FavoriteProvider.of(context);
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -88,7 +90,15 @@ class ProductCard extends StatelessWidget {
                                   topRight: Radius.circular(20)
                               )
                             ),
-                  child: IconButton(onPressed: (){}, icon: Icon(Icons.favorite_outline,color: Colors.white,size: 22,),)
+                  child: IconButton(onPressed: (){
+                    provider.toggleFavorite(product);
+                  }, icon: Icon(
+                    provider.isExist(product)
+                        ? Icons.favorite
+                        : Icons.favorite_border,
+                    color: Colors.white,
+                    size: 22,
+                  ),)
                           ),
               ))
         ],

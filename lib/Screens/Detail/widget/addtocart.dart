@@ -36,7 +36,11 @@ class _AddToCartState extends State<AddToCart> {
               child: Row(
                 children: [
                   IconButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        setState(() {
+                          currentIndex--;
+                        });
+                      },
                       splashColor: Colors.white,
                       splashRadius: 10,
                       icon: const Icon(Icons.remove,color: Colors.white,)),
@@ -44,7 +48,11 @@ class _AddToCartState extends State<AddToCart> {
                   Text('$currentIndex',style: const TextStyle(color: Colors.white,fontSize: 16,fontWeight: FontWeight.bold),),
                   const SizedBox(width: 10,),
                   IconButton(
-                      onPressed: (){},
+                      onPressed: (){
+                        setState(() {
+                          currentIndex++;
+                        });
+                      },
                       splashColor: Colors.white,
                       splashRadius: 10,
                       icon: const Icon(Icons.add,color: Colors.white,))
@@ -55,7 +63,18 @@ class _AddToCartState extends State<AddToCart> {
             GestureDetector(
               onTap: (){
                 provider.toggleFavourite(widget.product);
-                print('product added ${widget.product.title}');
+                const snackBar = SnackBar(
+                  content: Text(
+                    "Successfully added!",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                      color: Colors.white,
+                    ),
+                  ),
+                  duration: Duration(seconds: 1),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               child: Container(
                 alignment: Alignment.center,

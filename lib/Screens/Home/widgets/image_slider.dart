@@ -56,20 +56,10 @@ class _ImageSliderState extends State<ImageSlider> {
               allowImplicitScrolling: true,
               scrollDirection: Axis.horizontal,
               onPageChanged: widget.onChange,
-              children: [
-                Image.asset(
-                  'assets/slider.jpg',
-                  fit: BoxFit.cover,
-                ),
-                Image.asset(
-                  'assets/slider3.png',
-                  fit: BoxFit.cover,
-                ),
-                Image.asset(
-                  'assets/image1.png',
-                  fit: BoxFit.cover,
-                ),
-              ],
+              children: List.generate(3, (index)=>
+                  Image.asset('assets/banner${index+1}.jpeg',
+                fit: BoxFit.cover,),)
+
             ),
           ),
         ),
@@ -83,15 +73,15 @@ class _ImageSliderState extends State<ImageSlider> {
                 3, // number of slides
                     (index) => AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
-                  width: widget.currentSlide == index ? 15 : 8,
+                  width: widget.currentSlide == index ? 30 : 8,
                   height: 8,
                   margin: const EdgeInsets.only(right: 3),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
                     color: widget.currentSlide == index
-                        ? Colors.black
+                        ? Colors.white
                         : Colors.transparent,
-                    border: Border.all(color: Colors.black),
+                    border: Border.all(color: Colors.white),
                   ),
                 ),
               ),
