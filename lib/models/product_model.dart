@@ -25,7 +25,7 @@ class Product {
         required this.quantity});
 }
 
-final List<Product> products = [
+final List<Product> all = [
   Product(
     title: "Wireless Earphones",
     description:
@@ -180,7 +180,6 @@ final List<Product> products = [
     quantity: 1,
   ),
 ];
-
 final List<Product> shoes = [
   Product(
     title: "Air Jordan",
@@ -269,8 +268,6 @@ final List<Product> shoes = [
   ),
 
 ];
-
-
 final List<Product> beauty = [
   Product(
     title: "Face Care Product",
@@ -324,7 +321,6 @@ final List<Product> beauty = [
     quantity: 1,
   ),
 ];
-
 final List<Product> womenFashion = [
 
   Product(

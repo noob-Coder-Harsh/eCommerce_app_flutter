@@ -27,7 +27,7 @@ class _DetailScreenState extends State<DetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DetailAppBar(),
+            DetailAppBar(product: widget.product,),
             DetailsImageSlider(onChange: (image){
               setState(() {
                 currentImage = image;
