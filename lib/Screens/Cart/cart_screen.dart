@@ -34,44 +34,28 @@ class _CartScreenState extends State<CartScreen> {
     }
 
     return Scaffold(
+      backgroundColor:Theme.of(context).colorScheme.secondaryContainer,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NavbarPage(),
+              ),
+            );
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
+        title: const Center(child: Text('My Cart')),
+      ),
       // for total and check out
-      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      // backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       bottomSheet: CheckOutBox(),
       body: SafeArea(
         child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const NavbarPage(),
-                        ),
-                      );
-                    },
-                    style: IconButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      padding: const EdgeInsets.all(15),
-                    ),
-                    icon: const Icon(Icons.arrow_back_ios),
-                  ),
-                  const Text(
-                    "My Cart",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                    ),
-                  ),
-                  const SizedBox(),
-                ],
-              ),
-            ),
-            Expanded(
+          children: [Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: finalList.length,
@@ -149,9 +133,9 @@ class _CartScreenState extends State<CartScreen> {
                                 finalList.removeAt(index);
                                 setState(() {});
                               },
-                              icon: const Icon(
+                              icon: Icon(
                                 Icons.delete,
-                                color: Colors.red,
+                                color: Theme.of(context).colorScheme.primary,
                                 size: 20,
                               ),
                             ),

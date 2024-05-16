@@ -15,9 +15,9 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
     final provider = FavoriteProvider.of(context);
     final finalList = provider.favorites;
     return Scaffold(
-      backgroundColor:Theme.of(context).colorScheme.onPrimaryContainer,
+      backgroundColor:Theme.of(context).colorScheme.secondaryContainer,
       appBar: AppBar(
-        backgroundColor:Theme.of(context).colorScheme.onPrimaryContainer,
+        backgroundColor:Theme.of(context).colorScheme.secondaryContainer,
         title: const Text("Favorite",style: TextStyle(fontWeight: FontWeight.bold),),
         centerTitle: true,
       ),
@@ -45,7 +45,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                               height: 90,
                               width: 90,
                               decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                color: Theme.of(context).colorScheme.secondaryContainer,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               padding: const EdgeInsets.all(10),
@@ -75,7 +75,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                                 ),
                                 const SizedBox(height: 8),
                                 Text(
-                                  "\$${favoritItems.price}",
+                                  "₹${favoritItems.price}",
                                   style: const TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
@@ -100,8 +100,8 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                                     () {},
                               );
                             },
-                            child: const Icon(Icons.delete,
-                                color: Colors.red, size: 25),
+                            child: Icon(Icons.delete,
+                                color: Theme.of(context).colorScheme.primary, size: 25),
                           ),
                         ],
                       ),

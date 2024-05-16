@@ -19,7 +19,8 @@ class _DetailScreenState extends State<DetailScreen> {
   int currentColor = 0;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primaryFixed,
       floatingActionButton: AddToCart(product: widget.product,),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Padding(
@@ -27,6 +28,7 @@ class _DetailScreenState extends State<DetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 50,),
             DetailAppBar(product: widget.product,),
             DetailsImageSlider(onChange: (image){
               setState(() {
@@ -54,7 +56,11 @@ class _DetailScreenState extends State<DetailScreen> {
             ),
             SizedBox(height: 10,),
             Container(
-              color: Colors.white,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [BoxShadow(color: Theme.of(context).colorScheme.primaryFixedDim,offset: Offset(0,-5),blurRadius: 10)],
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40))
+              ),
                 padding: EdgeInsets.all(8),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,6 +109,6 @@ class _DetailScreenState extends State<DetailScreen> {
           ],
         ),
       ),
-    ));
+    );
   }
 }

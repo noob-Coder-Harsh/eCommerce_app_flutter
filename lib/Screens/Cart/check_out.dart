@@ -36,7 +36,7 @@ class CheckOutBox extends StatelessWidget {
                 ),
               ),
               Text(
-                "\$${provider.totalPrice()}",
+                "₹${provider.totalPrice()}",
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -58,7 +58,7 @@ class CheckOutBox extends StatelessWidget {
                 ),
               ),
               Text(
-                "\$${provider.totalPrice()}",
+                "₹${provider.totalPrice()}",
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

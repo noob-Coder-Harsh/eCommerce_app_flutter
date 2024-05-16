@@ -12,6 +12,7 @@ class DetailsImageSlider extends StatelessWidget {
       child: Column(
         children: [
           Container(
+            color: Theme.of(context).colorScheme.primaryFixed,
             width: MediaQuery.of(context).size.width, // Adjust width as needed
             height: 250, // Same as the height of the SizedBox
             child: PageView.builder(

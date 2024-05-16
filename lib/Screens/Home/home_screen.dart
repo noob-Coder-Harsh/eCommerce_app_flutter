@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       menFashion
     ];
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: selectedIndex == index
-                    ? Colors.blue[200]
+                    ? Theme.of(context).colorScheme.primaryFixedDim
                     : Colors.transparent,
               ),
               child: Column(

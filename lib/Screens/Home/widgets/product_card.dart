@@ -29,7 +29,7 @@ class ProductCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Hero(
@@ -41,15 +41,15 @@ class ProductCard extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(
                   product.title,
-                  style: TextStyle(fontSize: 16),
+                  style: const TextStyle(fontSize: 16),
                   maxLines: 2,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -58,7 +58,7 @@ class ProductCard extends StatelessWidget {
                     Text(
                       "₹${product.price}",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     Row(
                       children: List.generate(
@@ -66,7 +66,7 @@ class ProductCard extends StatelessWidget {
                           (index) => Container(
                                 width: 15,
                                 height: 15,
-                                margin: EdgeInsets.only(left: 4),
+                                margin: const EdgeInsets.only(left: 4),
                                 decoration: BoxDecoration(
                                     color: product.colors[index],
                                     shape: BoxShape.circle),
@@ -84,8 +84,8 @@ class ProductCard extends StatelessWidget {
                     height: 40,
                     width: 40,
                             decoration: BoxDecoration(
-                              color: Colors.deepOrange,
-                              borderRadius: BorderRadius.only(
+                              color: Theme.of(context).colorScheme.primaryFixedDim,
+                              borderRadius: const BorderRadius.only(
                                   bottomLeft: Radius.circular(20),
                                   topRight: Radius.circular(20)
                               )
