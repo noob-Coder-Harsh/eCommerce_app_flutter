@@ -3,6 +3,7 @@ import 'package:ecommerce_app/models/product_model.dart';
 import 'package:ecommerce_app/providers/fav_provider.dart';
 import 'package:flutter/material.dart';
 
+
 class ProductCard extends StatelessWidget {
   final Product product;
   const ProductCard({super.key, required this.product});
@@ -32,13 +33,21 @@ class ProductCard extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
-                Hero(
-                  tag: product.image,
-                  child: Image.asset(
-                    product.image,
-                    width: 150,
-                    height: 150,
-                    fit: BoxFit.cover,
+                Container(
+                  height: 150,
+                  width: double.infinity,
+                  child: Hero(
+                    tag: '${product.id}-0',
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: SizedBox(
+                        height: 150,
+                        child: Image.asset(
+                          product.images[0], // Display the first image in the list
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(

@@ -1,10 +1,13 @@
+import 'package:ecommerce_app/Screens/Detail/widget/modalsheet_provider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:ecommerce_app/Screens/Detail/widget/addtocart.dart';
+import 'package:ecommerce_app/Screens/Detail/widget/colors_widget.dart';
 import 'package:ecommerce_app/Screens/Detail/widget/description.dart';
 import 'package:ecommerce_app/Screens/Detail/widget/detail_appbar.dart';
-import 'package:ecommerce_app/Screens/Detail/widget/image_slider.dart';
 import 'package:ecommerce_app/Screens/Detail/widget/item_details.dart';
+import 'package:ecommerce_app/Screens/Detail/widget/show_image.dart';
 import 'package:ecommerce_app/models/product_model.dart';
-import 'package:flutter/material.dart';
 
 class DetailScreen extends StatefulWidget {
   final Product product;
@@ -17,95 +20,78 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   int currentImage = 0;
   int currentColor = 0;
+  // bool isModalShown = false;
+
+  void onSelectedColor(int index) {
+    setState(() {
+      currentImage = index;
+      currentColor = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final detailScreenProvider = Provider.of<DetailScreenProvider>(context, listen: false);
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryFixed,
-      floatingActionButton: AddToCart(product: widget.product,),
+      floatingActionButton: AddToCart(product: widget.product),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 50,),
-            DetailAppBar(product: widget.product,),
-            DetailsImageSlider(onChange: (image){
-              setState(() {
-                currentImage = image;
-              });
-            }, imagePath: widget.product.image),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                3, // number of slides
-                    (index) => AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
-                  width: currentImage == index ? 15 : 8,
-                  height: 8,
-                  margin: EdgeInsets.only(right: 3),
+            const SizedBox(height: 50),
+            DetailAppBar(product: widget.product),
+            ImageWidget(images: widget.product.images, currentIndex: currentImage),
+            const SizedBox(height: 10),
+              GestureDetector(
+                onVerticalDragEnd: (details) {
+                  if (details.primaryVelocity! < 0) {
+                    detailScreenProvider.showProductDetailsModal(context, widget.product, onSelectedColor);
+                    setState(() {
+                    });
+                  }
+                },
+                child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: currentImage == index
-                        ? Colors.black
-                        : Colors.transparent,
-                    border: Border.all(color: Colors.black),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Theme.of(context).colorScheme.primaryFixedDim,
+                        offset: const Offset(0, -5),
+                        blurRadius: 10,
+                      ),
+                    ],
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                  ),
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ItemDetails(product: widget.product),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Colors',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      ColorSelectionRow(
+                        colors: widget.product.colors,
+                        onColorSelected: onSelectedColor,
+                      ),
+                      const SizedBox(height: 10),
+                      Description(description: widget.product.description),
+                    ],
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 10,),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [BoxShadow(color: Theme.of(context).colorScheme.primaryFixedDim,offset: Offset(0,-5),blurRadius: 10)],
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40))
-              ),
-                padding: EdgeInsets.all(8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ItemDetails(product: widget.product),
-                    SizedBox(height: 10,),
-                    Text('Colors',style: TextStyle(fontSize: 25,
-                        fontWeight: FontWeight.bold),),
-                    Row(
-                      children: List.generate(widget.product.colors.length, (index) =>
-                          GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            currentColor = index;
-                            print(index);
-                          });
-                        },
-                        child: AnimatedContainer(
-                          duration: Duration(milliseconds: 300),
-                          width: 35,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: currentColor == index ? Colors.white
-                                : widget.product.colors[index],
-                            border: currentColor == index ? Border.all(color: widget.product.colors[index]) : null
-                          ),
-                          padding: currentColor == index ? EdgeInsets.all(2): null,
-                          margin: EdgeInsets.symmetric(horizontal: 8),
-                          child: Container(
-                            width: 30, height: 30,
-                            decoration: BoxDecoration(color: widget.product.colors[index],
-                            shape: BoxShape.circle,
-                            boxShadow: currentColor == index ? null :[BoxShadow(color: widget.product.colors[index],blurRadius: 5),
-                            ]),
-                          ),
-                        ),
-                      )),
-                    ),
-                    SizedBox(height: 10,),
-                    Description(description: widget.product.description)
-                  ],
-                ),
-            ),
-
           ],
         ),
       ),

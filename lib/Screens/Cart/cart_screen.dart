@@ -83,7 +83,7 @@ class _CartScreenState extends State<CartScreen> {
                                 ),
                                 padding: const EdgeInsets.all(4),
                                 child: Image.asset(
-                                  cartItems.image,
+                                  cartItems.images[index],
                                 ),
                               ),
                               const SizedBox(width: 10),

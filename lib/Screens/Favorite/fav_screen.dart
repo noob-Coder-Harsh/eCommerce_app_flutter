@@ -50,7 +50,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                               ),
                               padding: const EdgeInsets.all(10),
                               child: Image.asset(
-                                favoritItems.image,
+                                favoritItems.images[index],
                               ),
                             ),
                             const SizedBox(width: 10),

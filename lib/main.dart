@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/Screens/Detail/widget/modalsheet_provider.dart';
 import 'package:ecommerce_app/providers/cart_provider.dart';
 import 'package:ecommerce_app/providers/fav_provider.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CartProvider()),
-        ChangeNotifierProvider(create: (_)=> FavoriteProvider())
+        ChangeNotifierProvider(create: (_)=> FavoriteProvider()),
+        ChangeNotifierProvider(create: (_) => DetailScreenProvider()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

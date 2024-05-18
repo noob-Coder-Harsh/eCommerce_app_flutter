@@ -26,9 +26,9 @@ class _NavbarPageState extends State<NavbarPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: currentIndex==2? Colors.white : Theme.of(context).colorScheme.primary,
+        backgroundColor: currentIndex ==2 ? Colors.white70 : Theme.of(context).colorScheme.onTertiaryContainer,
         child: Icon(Icons.home,
-          color:currentIndex==2? Theme.of(context).colorScheme.primary : Colors.white,size: 30,),
+          color:currentIndex==2? Theme.of(context).colorScheme.primary : Colors.white70,size: 30,),
         onPressed: () {
         setState(() {
           currentIndex = 2;
@@ -53,7 +53,7 @@ class _NavbarPageState extends State<NavbarPage> {
               });
             },
                 icon: Icon(Icons.grid_view_outlined,size: 30,
-                  color: currentIndex == 0 ? Theme.of(context).colorScheme.primary : Colors.grey,)
+                  color: currentIndex == 0 ? Theme.of(context).colorScheme.primary : Colors.white70,)
             ),
             const SizedBox(width: 10,),
             IconButton(onPressed: (){
@@ -62,7 +62,7 @@ class _NavbarPageState extends State<NavbarPage> {
               });
             },
                 icon: Icon(Icons.favorite_outline,size: 30,
-                  color: currentIndex == 1 ? Theme.of(context).colorScheme.primary : Colors.grey,)
+                  color: currentIndex == 1 ? Theme.of(context).colorScheme.primary : Colors.white70,)
             ),
             const SizedBox(width: 50,),
             IconButton(onPressed: (){
@@ -71,7 +71,7 @@ class _NavbarPageState extends State<NavbarPage> {
               });
             },
                 icon: Icon(Icons.shopping_cart,size: 30,
-                  color: currentIndex == 3 ? Theme.of(context).colorScheme.primary : Colors.grey,)
+                  color: currentIndex == 3 ? Theme.of(context).colorScheme.primary : Colors.white70,)
             ),
             const SizedBox(width: 10,),
             IconButton(onPressed: (){
@@ -80,7 +80,7 @@ class _NavbarPageState extends State<NavbarPage> {
               });
             },
                 icon: Icon(Icons.person,size: 30,
-                  color: currentIndex == 4 ? Theme.of(context).colorScheme.primary : Colors.grey,)
+                  color: currentIndex == 4 ? Theme.of(context).colorScheme.primary : Colors.white70,)
             ),
           ],
         ),
