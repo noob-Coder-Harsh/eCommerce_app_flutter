@@ -3,7 +3,11 @@ import 'package:ecommerce_app/Screens/Cart/cart_screen.dart';
 import 'package:ecommerce_app/Screens/Home/home_screen.dart';
 import 'package:ecommerce_app/Screens/Favorite/fav_screen.dart';
 import 'package:ecommerce_app/Screens/Profile/profile.dart';
+import 'package:ecommerce_app/showCase/random_circles.dart';
+import 'package:ecommerce_app/showCase/sample1.dart';
 import 'package:flutter/material.dart';
+
+import 'Screens/Menu/menu_screen.dart';
 
 class NavbarPage extends StatefulWidget {
   const NavbarPage({super.key});
@@ -13,9 +17,9 @@ class NavbarPage extends StatefulWidget {
 }
 
 class _NavbarPageState extends State<NavbarPage> {
-  int currentIndex = 2;
+  int currentIndex = 0;
   List screens = [
-    const Scaffold(),
+    const MenuScreen(),
     const FavouritesScreen(),
     const HomeScreen(),
     const CartScreen(),

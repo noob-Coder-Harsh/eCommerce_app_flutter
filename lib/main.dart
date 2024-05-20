@@ -1,13 +1,16 @@
-import 'package:ecommerce_app/Screens/Detail/widget/modalsheet_provider.dart';
+import 'package:ecommerce_app/providers/modalsheet_provider.dart';
 import 'package:ecommerce_app/providers/cart_provider.dart';
 import 'package:ecommerce_app/providers/fav_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 import 'navbar_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ShowCaseWidget(
+    builder: Builder(builder: (context) => MyApp()),
+  ),);
 }
 
 class MyApp extends StatelessWidget {

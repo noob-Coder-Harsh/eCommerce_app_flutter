@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/product_model.dart';
-import 'colors_widget.dart';
-import 'description.dart';
-import 'item_details.dart';
+import '../models/product_model.dart';
+import '../Screens/Detail/widget/colors_widget.dart';
+import '../Screens/Detail/widget/description.dart';
+import '../Screens/Detail/widget/item_details.dart';
 
 class DetailScreenProvider with ChangeNotifier {
   void showProductDetailsModal(BuildContext context, Product product, Function(int) onSelectedColor) {

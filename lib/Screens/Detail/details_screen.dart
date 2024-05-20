@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/Screens/Detail/widget/modalsheet_provider.dart';
+import 'package:ecommerce_app/providers/modalsheet_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ecommerce_app/Screens/Detail/widget/addtocart.dart';
@@ -38,7 +38,7 @@ class _DetailScreenState extends State<DetailScreen> {
       floatingActionButton: AddToCart(product: widget.product),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
