@@ -3,8 +3,6 @@ import 'package:ecommerce_app/Screens/Cart/cart_screen.dart';
 import 'package:ecommerce_app/Screens/Home/home_screen.dart';
 import 'package:ecommerce_app/Screens/Favorite/fav_screen.dart';
 import 'package:ecommerce_app/Screens/Profile/profile.dart';
-import 'package:ecommerce_app/showCase/random_circles.dart';
-import 'package:ecommerce_app/showCase/sample1.dart';
 import 'package:flutter/material.dart';
 
 import 'Screens/Menu/menu_screen.dart';
